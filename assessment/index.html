@@ -3,53 +3,176 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Clinical Assessment | Marjon Sport Rehabilitation Toolkit</title>
-<link rel="stylesheet" href="../css/styles.css">
+<title>Marjon Sport Rehabilitation Toolkit</title>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <div class="accent-bar" aria-hidden="true"><span></span><span></span><span></span></div>
-<div class="app-shell">
-<aside class="sidebar">
-  <div class="logo">PLYMOUTH<br>MARJON<small>UNIVERSITY</small></div>
-  <p class="sidebar-title">Clinical<br>Assessment</p>
-  <nav class="steps"><a href="../index.html"><span>1</span><div>Toolkit Home<small>Main dashboard</small></div></a>
-<a href="#tools"><span>2</span><div>Tools<small>Available and in development</small></div></a>
-<a href="#pathway"><span>3</span><div>Pathway<small>Suggested order</small></div></a></nav>
-  <section class="about"><strong>Student Toolkit</strong><p>Practise, explore and build confidence through interactive learning activities.</p></section>
-  <p class="site">MARJON.AC.UK</p>
-</aside>
-<main class="content">
-  <div class="top-row">
-    <h1>Clinical Assessment</h1>
-    <div class="toolbar"><a class="button" href="../index.html">← Toolkit Home</a></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <nav class="hero-nav">
+      <div class="logo">PLYMOUTH<br>MARJON<small>UNIVERSITY</small></div>
+      <div class="nav-links">
+        <a href="#dashboard">Explore</a>
+        <a href="#recent">Recently Added</a>
+        <a href="#pathways">Learning Pathways</a>
+      </div>
+    </nav>
+
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="kicker">Interactive Clinical Learning Platform</span>
+        <h1>Marjon Sport Rehabilitation Toolkit</h1>
+        <p>Practise clinical assessment, interpret laboratory data, explore anatomy and build confident rehabilitation decisions through interactive learning tools.</p>
+        <div class="hero-actions">
+          <a class="button" href="#dashboard">Launch Learning →</a>
+          <a class="button secondary" href="assessment/postural-assessment.html">Open Postural Assessment</a>
+        </div>
+      </div>
+
+      <div class="device" aria-label="Toolkit preview panel">
+        <div class="device-top"><span></span><span></span><span></span></div>
+        <div class="pulse-card">
+          <strong>Clinical Assessment</strong>
+          <p style="margin:0;color:rgba(255,255,255,.72)">Posture • ROM • Strength • Special Tests</p>
+        </div>
+        <div class="metric-row">
+          <div class="metric"><small>TOOLS</small><b>2</b></div>
+          <div class="metric"><small>SECTIONS</small><b>6</b></div>
+        </div>
+        <div class="pulse-card" style="margin-top:14px">
+          <strong>Live learning data</strong>
+          <div class="trace"></div>
+        </div>
+        <div class="pulse-card">
+          <strong>Recently added</strong>
+          <p style="margin:0;color:rgba(255,255,255,.72)">Interactive Postural Assessment + ROM Assessment</p>
+        </div>
+      </div>
+    </div>
   </div>
-  <section class="card">
-    <h2>Clinical Assessment</h2>
-    <p>Practise structured assessment skills, record findings clearly and develop your clinical reasoning.</p>
+</header>
+
+<main class="main">
+  <section id="dashboard">
+    <div class="section-head">
+      <div>
+        <h2>Choose your learning space</h2>
+        <p>Each section will grow into a collection of interactive tools, simulations and guided activities.</p>
+      </div>
+    </div>
+
+    <div class="dashboard-grid">
+      <a class="tile pink" href="assessment/index.html">
+        <div class="tile-content">
+          <div class="icon">🩺</div>
+          <h3>Clinical Assessment</h3>
+          <p>Practise structured assessment skills and generate clear clinical summaries.</p>
+          <div class="tile-footer"><span class="badge">Available</span><span class="launch">Explore →</span></div>
+        </div>
+      </a>
+
+      <a class="tile blue" href="outcome-measures/index.html">
+        <div class="tile-content">
+          <div class="icon">📊</div>
+          <h3>Outcome Measures</h3>
+          <p>Complete and score digital patient-reported outcome measures.</p>
+          <div class="tile-footer"><span class="badge">In development</span><span class="launch">Explore →</span></div>
+        </div>
+      </a>
+
+      <a class="tile green" href="laboratory/index.html">
+        <div class="tile-content">
+          <div class="icon">🧪</div>
+          <h3>Laboratory Simulations</h3>
+          <p>Explore performance and clinical testing through live-style data simulations.</p>
+          <div class="tile-footer"><span class="badge">In development</span><span class="launch">Explore →</span></div>
+        </div>
+      </a>
+
+      <a class="tile orange" href="exercise-prescription/index.html">
+        <div class="tile-content">
+          <div class="icon">💪</div>
+          <h3>Exercise Prescription</h3>
+          <p>Build rehabilitation plans and practise progression decisions.</p>
+          <div class="tile-footer"><span class="badge">In development</span><span class="launch">Explore →</span></div>
+        </div>
+      </a>
+
+      <a class="tile purple" href="anatomy/index.html">
+        <div class="tile-content">
+          <div class="icon">🦴</div>
+          <h3>Anatomy Explorer</h3>
+          <p>Connect anatomy with assessment, pathology and rehabilitation practice.</p>
+          <div class="tile-footer"><span class="badge">In development</span><span class="launch">Explore →</span></div>
+        </div>
+      </a>
+
+      <a class="tile cyan" href="clinical-reasoning/index.html">
+        <div class="tile-content">
+          <div class="icon">🧠</div>
+          <h3>Clinical Reasoning</h3>
+          <p>Work through virtual patient cases from assessment to management planning.</p>
+          <div class="tile-footer"><span class="badge">In development</span><span class="launch">Explore →</span></div>
+        </div>
+      </a>
+    </div>
   </section>
-  <section id="tools">
-    <div class="dashboard-grid"><article class="tool-card">
-          <div><span class="status ">Available</span><strong>Postural Assessment Checklist</strong><p>Record anterior, lateral and posterior observations. Neutral findings are recorded but not counted.</p></div>
-          <a class="button primary" href="postural-assessment.html">Launch tool</a>
-        </article><article class="tool-card">
-          <div><span class="status soon">In development</span><strong>ROM Assessment</strong><p>Enter range of movement values and compare sides.</p></div>
-          <button class="button" disabled>In development</button>
-        </article><article class="tool-card">
-          <div><span class="status soon">In development</span><strong>Gait Assessment</strong><p>Record stance, swing and movement observations.</p></div>
-          <button class="button" disabled>In development</button>
-        </article><article class="tool-card">
-          <div><span class="status soon">In development</span><strong>Muscle Strength Testing</strong><p>Practise grading and documenting strength findings.</p></div>
-          <button class="button" disabled>In development</button>
-        </article><article class="tool-card">
-          <div><span class="status soon">In development</span><strong>Special Tests Toolkit</strong><p>Record test results and link findings to clinical reasoning.</p></div>
-          <button class="button" disabled>In development</button>
-        </article></div>
+
+  <section class="cards" id="recent" style="margin-top:34px">
+    <div class="card">
+      <h2>Recently added</h2>
+      <p>Start with the first live tool in the toolkit.</p>
+      <div class="new-tool">
+        <div>
+          <strong>Interactive Postural Assessment</strong><br>
+          <span>Anterior, lateral and posterior assessment with automatic deviation summary.</span>
+        </div>
+        <a class="button" href="assessment/postural-assessment.html">Launch →</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>In development</h2>
+      <p>These tools are planned next as the platform grows.</p>
+      <div class="pathway">
+        <span class="step">ROM Assessment</span>
+        <span class="step">Gait Assessment</span>
+        <span class="step">SOAP Builder</span>
+        <span class="step">VO₂max</span>
+        <span class="step">Force Plates</span>
+      </div>
+    </div>
   </section>
-  <section class="card" id="pathway" style="margin-top:18px">
-    <h2>Suggested pathway</h2>
-    <p>Work through the available tools first, then return as new activities are added.</p>
+
+  <section class="cards" id="pathways" style="margin-top:18px">
+    <div class="card">
+      <h2>Clinical Assessment Pathway</h2>
+      <p>Use this sequence to practise moving from observation to documentation.</p>
+      <div class="pathway">
+        <span class="step">Posture</span>
+        <span class="step">ROM</span>
+        <span class="step">Strength</span>
+        <span class="step">Special Tests</span>
+        <span class="step">SOAP Notes</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Laboratory Pathway</h2>
+      <p>Use this sequence to practise interpreting sport and clinical testing data.</p>
+      <div class="pathway">
+        <span class="step">VO₂max</span>
+        <span class="step">CMJ</span>
+        <span class="step">IMTP</span>
+        <span class="step">Isokinetics</span>
+        <span class="step">Interpretation</span>
+      </div>
+    </div>
   </section>
 </main>
-</div>
+
+<footer class="footer">Plymouth Marjon University • Sport Rehabilitation Toolkit</footer>
 </body>
 </html>
