@@ -1,0 +1,387 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Postural Assessment Checklist | Plymouth Marjon University</title>
+<style>
+:root{
+  --navy:#001B44;--pink:#FF2F92;--blue:#35A9E1;--green:#8DC63F;
+  --bg:#F4F7FB;--card:#fff;--ink:#102033;--muted:#5B6778;--border:#DDE6F0;
+  --pink-soft:#FFE4F1;--blue-soft:#E8F6FD;--green-soft:#EFF8DF;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--ink);line-height:1.45}
+.accent-bar{height:10px;display:grid;grid-template-columns:1fr 1fr 1fr}
+.accent-bar span:nth-child(1){background:var(--pink)}
+.accent-bar span:nth-child(2){background:var(--green)}
+.accent-bar span:nth-child(3){background:var(--blue)}
+.app-shell{display:grid;grid-template-columns:295px 1fr;min-height:calc(100vh - 10px)}
+.sidebar{background:linear-gradient(180deg,var(--navy),#00112E);color:white;padding:28px 24px;position:sticky;top:0;align-self:start;min-height:calc(100vh - 10px)}
+.logo{font-size:30px;font-weight:900;line-height:1.02;letter-spacing:.02em;margin-bottom:28px}
+.logo small{display:block;font-size:13px;letter-spacing:.12em;color:rgba(255,255,255,.72);margin-top:5px}
+.sidebar-title{font-size:34px;line-height:1.05;font-weight:900;margin:0 0 26px}
+.steps{display:grid;gap:12px}
+.steps a{text-decoration:none;display:flex;gap:12px;align-items:flex-start;color:white;font-weight:800}
+.steps a span{width:34px;min-width:34px;height:34px;display:grid;place-items:center;border-radius:999px;border:2px solid rgba(255,255,255,.8)}
+.steps small{display:block;margin-top:2px;color:rgba(255,255,255,.7);font-weight:500}
+.steps a:nth-child(2) span{background:var(--pink)}
+.steps a:nth-child(3) span{background:var(--green);color:var(--navy)}
+.steps a:nth-child(4) span{background:var(--blue)}
+.about{margin-top:34px;border:1px solid rgba(255,255,255,.35);background:rgba(0,0,0,.12);border-radius:16px;padding:18px;font-size:14px}
+.site{position:absolute;bottom:28px;font-weight:900;letter-spacing:.03em}
+.content{max-width:1240px;width:100%;padding:26px clamp(18px,4vw,48px) 44px}
+.top-row{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px}
+h1{color:var(--navy);font-size:30px;margin:0}
+.toolbar{display:flex;gap:12px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;box-shadow:0 8px 22px rgba(0,27,68,.07);padding:20px;margin:16px 0}
+.details-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+label{color:var(--navy);font-weight:800}
+input[type=text],input[type=date],select,textarea{width:100%;margin-top:6px;border:1px solid #C9D5E4;border-radius:10px;padding:11px 12px;font-size:15px;background:white;color:var(--ink)}
+textarea{min-height:92px;resize:vertical}
+.plumb-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.plumb-grid h3{margin:0 0 8px;color:var(--navy)}
+.key{display:grid;grid-template-columns:auto 1fr repeat(3,auto);gap:18px;align-items:center;background:#F8FBFE;border-color:#BFDDF6}
+.key-icon{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--blue);color:var(--blue);font-weight:900}
+.legend{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:var(--navy)}
+.dot{width:19px;height:19px;border-radius:50%;border:2px solid currentColor;display:inline-block}
+.neutral{color:#0076D7}.deviation{color:var(--pink)}.notassessed{color:#7C8BA0}
+.assessment-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:16px}
+.view-column{border:1px solid var(--border);border-radius:14px;background:#fff;overflow:hidden}
+.view-head{padding:14px 16px;border-bottom:3px solid var(--pink);font-weight:900;color:var(--navy);text-align:center}
+.view-column:nth-child(2) .view-head{border-bottom-color:var(--blue)}
+.view-column:nth-child(3) .view-head{border-bottom-color:var(--green)}
+.region{padding:14px;border-bottom:1px solid #EEF2F7}
+.region:last-child{border-bottom:0}
+.region h3{margin:0 0 8px;color:var(--navy);font-size:17px}
+.option{display:flex;align-items:center;gap:8px;margin:6px 0;font-size:14px;color:var(--ink)}
+.option input{width:16px;height:16px;margin:0;accent-color:var(--pink)}
+.option.neutral-option input{accent-color:var(--blue)}
+.option.not-option input{accent-color:#8292A8}
+.option.neutral-option{color:#006EC8}
+.option.deviation-option{color:#D80062}
+.option.not-option{color:#5B6778}
+.option.selected{font-weight:900}
+.side-choice{display:inline-flex;gap:8px;margin-left:6px}
+.summary-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}
+.summary-box{border:1px solid var(--border);border-radius:14px;background:#fff;padding:18px}
+.summary-box strong{display:block;color:var(--navy);margin-bottom:8px}
+.big-number{font-size:46px;font-weight:900;color:var(--pink);line-height:1}
+.breakdown{display:grid;gap:8px;font-size:14px}
+.breakdown span{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:8px}
+.note{border-color:#FFC4DA;background:#FFF1F7;color:var(--navy)}
+.actions{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:18px}
+button{border:1px solid var(--navy);border-radius:10px;padding:12px 16px;font-weight:900;cursor:pointer;background:white;color:var(--navy);font-size:15px}
+button.primary{border:0;color:white;background:linear-gradient(135deg,var(--pink),var(--navy),var(--blue))}
+.hint{color:var(--muted);font-size:14px;margin:6px 0 0}
+@media(max-width:1100px){
+  .app-shell{grid-template-columns:1fr}.sidebar{position:relative;min-height:auto}.site{display:none}
+  .assessment-grid,.details-grid,.summary-grid,.plumb-grid,.key{grid-template-columns:1fr}
+  .toolbar,.actions{display:grid;grid-template-columns:1fr}
+}
+@media print{
+  .accent-bar,.sidebar,.toolbar,.actions{display:none}
+  .app-shell{display:block}.content{max-width:none;padding:0}
+  .card{box-shadow:none;page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="accent-bar" aria-hidden="true"><span></span><span></span><span></span></div>
+
+<div class="app-shell">
+<aside class="sidebar">
+  <div class="logo">PLYMOUTH<br>MARJON<small>UNIVERSITY</small></div>
+  <p class="sidebar-title">Postural<br>Assessment<br>Checklist</p>
+  <nav class="steps">
+    <a href="#patient"><span>1</span><div>Patient Details<small>Assessment information</small></div></a>
+    <a href="#assessment"><span>2</span><div>Postural Assessment<small>Neutral or deviation</small></div></a>
+    <a href="#summary"><span>3</span><div>Summary & Findings<small>Automatically calculated</small></div></a>
+    <a href="#notes"><span>4</span><div>Notes & Plan<small>Clinical interpretation</small></div></a>
+  </nav>
+  <section class="about">
+    <strong>About this tool</strong>
+    <p>Use this tool to practise recording posture in anterior, lateral and posterior views using the plumb line as a reference.</p>
+    <p><strong>Important:</strong> neutral findings are normal and are not counted towards the findings total.</p>
+  </section>
+  <p class="site">MARJON.AC.UK</p>
+</aside>
+
+<main class="content">
+  <div class="top-row">
+    <h1>Postural Assessment Checklist</h1>
+    <div class="toolbar">
+      <a href="index.html" style="border:1px solid var(--navy);border-radius:10px;padding:12px 16px;font-weight:900;background:white;color:var(--navy);font-size:15px;text-decoration:none;display:inline-flex;align-items:center">← Clinical Assessment</a>
+      <button type="button" id="clearTop">↻ Clear all</button>
+      <button type="button" id="printTop">🖨 Export / Print</button>
+    </div>
+  </div>
+
+  <section class="card" id="patient">
+    <div class="details-grid">
+      <label>Patient name<input id="patientName" type="text" placeholder="Enter patient name"></label>
+      <label>DoB<input id="dob" type="date"></label>
+      <label>Therapist name<input id="therapist" type="text" placeholder="Enter therapist name"></label>
+      <label>Today's Date<input id="assessmentDate" type="date"></label>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2 style="text-align:center;margin:0 0 12px;color:var(--navy)">PLUMB LINE</h2>
+    <div class="plumb-grid">
+      <div>
+        <h3>Posterior View</h3>
+        <label class="option deviation-option"><input type="checkbox" data-view="Plumb line" data-type="deviation" data-label="Posterior plumb line: head, upper body, shoulders, scapula, spine, pelvis and knees not equidistant from centre"> Head, upper body, shoulders, scapula, spine, pelvis and knees are not equidistant from centre</label>
+      </div>
+      <div>
+        <h3>Lateral View</h3>
+        <label class="option deviation-option"><input type="checkbox" data-view="Plumb line" data-type="deviation" data-label="Lateral plumb line: ear, shoulder, greater trochanter, anterior knee and lateral malleoli not in line"> Ear, shoulder, greater trochanter, anterior knee and lateral malleoli are not in line</label>
+      </div>
+    </div>
+  </section>
+
+  <section class="card key">
+    <div class="key-icon">i</div>
+    <div>
+      <strong style="color:var(--navy)">KEY</strong>
+      <p class="hint">Select neutral where normal alignment is observed. Neutral findings are recorded but are not counted towards the findings total.</p>
+    </div>
+    <div class="legend neutral"><span class="dot"></span> Neutral<br><small>(not counted)</small></div>
+    <div class="legend deviation"><span class="dot"></span> Deviation found<br><small>(counts)</small></div>
+    <div class="legend notassessed"><span class="dot"></span> Not assessed</div>
+  </section>
+
+  <section id="assessment" class="assessment-grid"></section>
+
+  <section class="card" id="summary">
+    <div class="summary-grid">
+      <div class="summary-box">
+        <strong>FINDINGS SUMMARY</strong>
+        <p class="hint">Total deviations from neutral only.</p>
+        <div class="big-number" id="totalDeviations">0</div>
+      </div>
+      <div class="summary-box">
+        <strong>VIEW BREAKDOWN</strong>
+        <div class="breakdown">
+          <div><span style="background:var(--pink)"></span>Anterior: <b id="anteriorCount">0</b></div>
+          <div><span style="background:var(--blue)"></span>Lateral: <b id="sideCount">0</b></div>
+          <div><span style="background:var(--green)"></span>Posterior: <b id="posteriorCount">0</b></div>
+          <div><span style="background:var(--navy)"></span>Plumb line: <b id="plumbCount">0</b></div>
+        </div>
+      </div>
+      <div class="summary-box note">
+        <strong>IMPORTANT</strong>
+        Neutral findings are not counted. Only deviations from neutral are tallied in the total.
+      </div>
+    </div>
+    <textarea id="findingsOutput" style="margin-top:16px" readonly placeholder="Selected deviations will appear here..."></textarea>
+  </section>
+
+  <section class="card" id="notes">
+    <h2>Notes & Plan</h2>
+    <p class="hint">Use this to link posture findings with symptoms, movement assessment and clinical reasoning.</p>
+    <textarea id="clinicalNotes" placeholder="Clinical interpretation, relevant symptoms, movement links, treatment plan or follow-up..."></textarea>
+    <div class="actions">
+      <button type="button" id="copySummary">Copy summary</button>
+      <button type="button" id="downloadCsv">Download CSV</button>
+      <button type="button" id="printPdf">Print / save PDF</button>
+      <button type="button" class="primary" id="clearBottom">Clear all</button>
+    </div>
+    <p class="hint" id="feedback">Ready.</p>
+  </section>
+</main>
+</div>
+
+<script>
+const assessment = {
+  "ANTERIOR VIEW": {
+    view:"Anterior",
+    regions:{
+      "Head":[["Neutral","neutral",false],["Rotated clockwise","deviation",false],["Rotated anti-clockwise","deviation",false],["Tilted","deviation",true],["Shifted","deviation",true]],
+      "Shoulder":[["Neutral","neutral",true],["Elevated","deviation",true],["Depressed","deviation",true]],
+      "Rib cage":[["Neutral","neutral",true],["Elevated","deviation",true],["Shifted","deviation",true],["Rotated clockwise","deviation",false],["Rotated anti-clockwise","deviation",false]],
+      "Femurs":[["Neutral","neutral",true],["Internal rotation","deviation",true],["External rotation","deviation",true]],
+      "Patella / Knees":[["Neutral","neutral",true],["Medial","deviation",true],["Lateral","deviation",true],["Knock-kneed valgum","deviation",false],["Bow-legged varum","deviation",false]],
+      "Lower leg":[["Neutral","neutral",true],["Internal rotation","deviation",true],["External rotation","deviation",true]],
+      "Feet":[["Neutral","neutral",true],["Inverted / supinated","deviation",true],["Everted / pronated","deviation",true],["Flat arch","deviation",true],["High arch","deviation",true]]
+    }
+  },
+  "SIDE (LATERAL) VIEW": {
+    view:"Lateral",
+    regions:{
+      "Head":[["Neutral","neutral",false],["Forward","deviation",false],["Retracted","deviation",false]],
+      "Cervical Spine":[["Neutral","neutral",false],["Flat","deviation",false],["Excessive extension","deviation",false]],
+      "Thoracic Spine":[["Neutral","neutral",false],["Flat","deviation",false],["Excessive extension","deviation",false]],
+      "Lumbar Spine":[["Neutral","neutral",false],["Flat","deviation",false],["Excessive extension","deviation",false]],
+      "Pelvis":[["Neutral","neutral",true],["Anterior tilt","deviation",true],["Posterior tilt","deviation",true]],
+      "Hip":[["Neutral","neutral",true],["Flexed","deviation",true],["Extended","deviation",true]],
+      "Patella / Knees":[["Neutral","neutral",true],["Hyperextended","deviation",true],["Flexed","deviation",true]],
+      "Ankle":[["Neutral","neutral",true],["Dorsi flexed","deviation",true],["Plantar flexed","deviation",true]]
+    }
+  },
+  "POSTERIOR VIEW": {
+    view:"Posterior",
+    regions:{
+      "Humeri":[["Neutral","neutral",true],["Medially rotated","deviation",true]],
+      "Scapulae":[["Neutral","neutral",true],["Protracted","deviation",true],["Retracted","deviation",true],["Elevated","deviation",true],["Depressed","deviation",true],["Upward rotation","deviation",true],["Downward rotation","deviation",true],["Winging","deviation",true]],
+      "Pelvis":[["Level","neutral",true],["Elevated","deviation",true],["Rotated clockwise","deviation",false],["Rotated anti-clockwise","deviation",false]]
+    }
+  }
+};
+
+function safeId(text){return text.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"")}
+function renderAssessment(){
+  const holder = document.getElementById("assessment");
+  Object.entries(assessment).forEach(([title, data]) => {
+    const column = document.createElement("section");
+    column.className = "view-column";
+    column.innerHTML = `<div class="view-head">◉ ${title}</div>`;
+    Object.entries(data.regions).forEach(([region, options]) => {
+      const regionBox = document.createElement("div");
+      regionBox.className = "region";
+      regionBox.innerHTML = `<h3>${region}</h3>`;
+      options.forEach(([label, type, sided]) => {
+        const id = `${data.view}|${region}|${label}`;
+        const option = document.createElement("label");
+        option.className = `option ${type === "neutral" ? "neutral-option" : "deviation-option"}`;
+        option.innerHTML = `
+          <input type="checkbox"
+            data-view="${data.view}"
+            data-region="${region}"
+            data-type="${type}"
+            data-label="${label}">
+          <span>${label}</span>
+          ${sided ? `<span class="side-choice">
+              <label>right <input type="checkbox" data-side="right" data-parent="${id}"></label>
+              <label>left <input type="checkbox" data-side="left" data-parent="${id}"></label>
+            </span>` : ""}
+        `;
+        option.querySelector("input").dataset.parentKey = id;
+        regionBox.appendChild(option);
+      });
+      const na = document.createElement("label");
+      na.className = "option not-option";
+      na.innerHTML = `<input type="checkbox" data-view="${data.view}" data-region="${region}" data-type="not-assessed" data-label="Not assessed"> <span>Not assessed</span>`;
+      regionBox.appendChild(na);
+      column.appendChild(regionBox);
+    });
+    holder.appendChild(column);
+  });
+}
+renderAssessment();
+
+document.getElementById("assessmentDate").value = new Date().toISOString().slice(0,10);
+
+function getSelected(){
+  return [...document.querySelectorAll('input[type="checkbox"][data-label]:checked')];
+}
+function getSides(parentKey){
+  return [...document.querySelectorAll(`input[data-parent="${CSS.escape(parentKey)}"]:checked`)].map(x => x.dataset.side);
+}
+function update(){
+  document.querySelectorAll(".option").forEach(row => {
+    const main = row.querySelector('input[type="checkbox"][data-label]');
+    row.classList.toggle("selected", main && main.checked);
+  });
+
+  const selected = getSelected();
+  const deviations = selected.filter(x => x.dataset.type === "deviation");
+  const counts = {Anterior:0,Lateral:0,Posterior:0,"Plumb line":0};
+  deviations.forEach(x => counts[x.dataset.view] = (counts[x.dataset.view] || 0) + 1);
+
+  document.getElementById("totalDeviations").textContent = deviations.length;
+  document.getElementById("anteriorCount").textContent = counts.Anterior || 0;
+  document.getElementById("sideCount").textContent = counts.Lateral || 0;
+  document.getElementById("posteriorCount").textContent = counts.Posterior || 0;
+  document.getElementById("plumbCount").textContent = counts["Plumb line"] || 0;
+
+  const output = deviations.map(x => {
+    const sides = getSides(x.dataset.parentKey);
+    const sideText = sides.length ? ` (${sides.join(" / ")})` : "";
+    return `• ${x.dataset.view}: ${x.dataset.region || ""} - ${x.dataset.label}${sideText}`;
+  }).join("\n");
+
+  document.getElementById("findingsOutput").value = output || "No deviations from neutral selected.";
+}
+document.addEventListener("change", update);
+
+function patientValue(id){return document.getElementById(id)?.value || "Not entered";}
+function buildSummary(){
+  const deviations = getSelected().filter(x => x.dataset.type === "deviation");
+  const neutrals = getSelected().filter(x => x.dataset.type === "neutral");
+  const notAssessed = getSelected().filter(x => x.dataset.type === "not-assessed");
+
+  const lines = [];
+  lines.push("POSTURAL ASSESSMENT SUMMARY");
+  lines.push(`Patient: ${patientValue("patientName")}`);
+  lines.push(`DoB: ${patientValue("dob")}`);
+  lines.push(`Therapist: ${patientValue("therapist")}`);
+  lines.push(`Date: ${patientValue("assessmentDate")}`);
+  lines.push("");
+  lines.push(`Total deviations from neutral: ${deviations.length}`);
+  lines.push(`Neutral findings selected but not counted: ${neutrals.length}`);
+  lines.push(`Not assessed selections: ${notAssessed.length}`);
+  lines.push("");
+  lines.push("Deviations:");
+  if(!deviations.length) lines.push("• None selected");
+  deviations.forEach(x => {
+    const sides = getSides(x.dataset.parentKey);
+    const sideText = sides.length ? ` (${sides.join(" / ")})` : "";
+    lines.push(`• ${x.dataset.view}: ${x.dataset.region || ""} - ${x.dataset.label}${sideText}`);
+  });
+  lines.push("");
+  lines.push("Clinical notes / plan:");
+  lines.push(patientValue("clinicalNotes"));
+  return lines.join("\n");
+}
+
+document.getElementById("copySummary").onclick = async () => {
+  await navigator.clipboard.writeText(buildSummary());
+  document.getElementById("feedback").textContent = "Summary copied.";
+};
+
+document.getElementById("downloadCsv").onclick = () => {
+  const rows = [["Patient","Date","View","Region","Finding","Type","Side","Counts towards total"]];
+  getSelected().forEach(x => {
+    const sides = getSides(x.dataset.parentKey).join(" / ");
+    rows.push([
+      patientValue("patientName"),
+      patientValue("assessmentDate"),
+      x.dataset.view,
+      x.dataset.region || "",
+      x.dataset.label,
+      x.dataset.type,
+      sides,
+      x.dataset.type === "deviation" ? "Yes" : "No"
+    ]);
+  });
+  const csv = rows.map(r => r.map(v => `"${String(v).replaceAll('"','""')}"`).join(",")).join("\n");
+  const blob = new Blob([csv], {type:"text/csv"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "postural-assessment.csv";
+  a.click();
+  URL.revokeObjectURL(a.href);
+  document.getElementById("feedback").textContent = "CSV downloaded.";
+};
+
+function clearAll(){
+  document.querySelectorAll('input[type="checkbox"]').forEach(x => x.checked = false);
+  document.querySelectorAll('input[type="text"], input[type="date"], textarea').forEach(x => {
+    if(x.id !== "assessmentDate") x.value = "";
+  });
+  document.getElementById("assessmentDate").value = new Date().toISOString().slice(0,10);
+  update();
+  document.getElementById("feedback").textContent = "Assessment cleared.";
+}
+document.getElementById("clearTop").onclick = clearAll;
+document.getElementById("clearBottom").onclick = clearAll;
+document.getElementById("printTop").onclick = () => window.print();
+document.getElementById("printPdf").onclick = () => window.print();
+
+update();
+</script>
+</body>
+</html>
